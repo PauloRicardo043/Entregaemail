@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Informações sobre o imóvel</title>
+</head>
+<body>
+    <h2>Olá, <span th:text="${cliente.nome}">Cliente</span>!</h2>
+
+    <p>
+        Obrigado por entrar em contato com a nossa imobiliária. Recebemos seu
+        interesse e teremos prazer em ajudar você a encontrar o imóvel ideal.
+        Confira abaixo as informações solicitadas:
+    </p>
+
+    <h3 th:text="${imovel.titulo}">Imóvel</h3>
+    <p th:text="${imovel.descricao}">Descrição do imóvel</p>
+
+    <ul>
+        <li><strong>Código:</strong> <span th:text="${imovel.id}">0</span></li>
+        <li><strong>Tipo:</strong>
+            <span th:text="${imovel.tipoImovel != null ? imovel.tipoImovel.nome : 'Não informado'}">Não informado</span>
+        </li>
+        <li><strong>Finalidade:</strong> <span th:text="${imovel.finalidade}">Não informado</span></li>
+        <li><strong>Endereço:</strong>
+            <span th:text="${imovel.endereco}">Não informado</span>,
+            <span th:text="${imovel.numero}">s/n</span>
+            <span th:if="${imovel.complemento != null}" th:text="${' - ' + imovel.complemento}"></span>
+        </li>
+        <li><strong>Bairro:</strong>
+            <span th:text="${imovel.bairro != null ? imovel.bairro.nome : 'Não informado'}">Não informado</span>
+        </li>
+        <li><strong>Cidade/Estado:</strong>
+            <span th:text="${imovel.bairro != null ? imovel.bairro.cidade : 'Não informado'}">Não informado</span> /
+            <span th:text="${imovel.bairro != null ? imovel.bairro.estado : 'Não informado'}">Não informado</span>
+        </li>
+        <li><strong>CEP:</strong> <span th:text="${imovel.cep}">Não informado</span></li>
+        <li><strong>Status:</strong> <span th:text="${imovel.status}">Não informado</span></li>
+        <li><strong>Dormitórios:</strong> <span th:text="${imovel.dormitorios}">0</span></li>
+        <li><strong>Banheiros:</strong> <span th:text="${imovel.banheiros}">0</span></li>
+        <li><strong>Garagem:</strong> <span th:text="${imovel.garagem}">0</span></li>
+        <li><strong>Área total:</strong> <span th:text="${imovel.areaTotal}">Não informado</span> m²</li>
+        <li><strong>Área construída:</strong> <span th:text="${imovel.areaConstruida}">Não informado</span> m²</li>
+        <li><strong>Preço de venda:</strong> R$ <span th:text="${imovel.precoVenda}">Não informado</span></li>
+        <li><strong>Preço de aluguel:</strong> R$ <span th:text="${imovel.precoAluguel}">Não informado</span></li>
+        <li><strong>Características:</strong> <span th:text="${imovel.caracteristicas}">Não informado</span></li>
+    </ul>
+
+    <h3>Sua solicitação</h3>
+    <p><strong>Mensagem:</strong> <span th:text="${cliente.mensagem}">Mensagem do cliente</span></p>
+    <p><strong>Telefone informado:</strong> <span th:text="${cliente.telefone}">Telefone</span></p>
+    <p><strong>E-mail informado:</strong> <span th:text="${cliente.email}">E-mail</span></p>
+
+    <p>
+        Em breve nossa equipe entrará em contato para tirar suas dúvidas e
+        fornecer mais detalhes. Se preferir, responda a este e-mail.
+    </p>
+    <p>Atenciosamente,<br>Equipe da Imobiliária</p>
+</body>
+</html>
